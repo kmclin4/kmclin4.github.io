@@ -9,3 +9,18 @@ var radarDisplayOptions = {
 };
 var radar = L.tileLayer.wms(radarUrl, radarDisplayOptions).addTo(map);
 
+var weatherAlertsUrl = 'https://api.weather.gov/alerts/active?region_type=land';
+$.getJSON(weatherAlertsUrl, function(data) {
+  L.geoJSON(data, {
+    // Color all alert polygons orange, but color Severe polygons red
+    style: function(feature){
+      var alertColor = 'orange';
+      if (feature.properties.severity === 'Severe') alertColor = 'red';
+      return { color: alertColor }
+    },
+    // Add a popup on each feature showing the NWS alert headline
+    onEachFeature: function(feature, layer) {
+      layer.bindPopup(feature.properties.headline);
+    }
+  }).addTo(map);
+});
