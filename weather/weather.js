@@ -1,5 +1,5 @@
 var map = L.map('map').setView([38, -95], 4);
-var basemapUrl = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
+var basemapUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}{r}.{ext}';
 var basemap = L.tileLayer(basemapUrl).addTo(map);
 var radarUrl = 'https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi';
 var radarDisplayOptions = {
