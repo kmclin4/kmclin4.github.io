@@ -24,7 +24,7 @@ $.getJSON(weatherAlertsUrl, function(data) {
     },
     // Add a popup on each feature showing the NWS alert headline
     onEachFeature: function(feature, layer) {
-      layer.bindPopup(feature.properties.headline);
+      layer.bindPopup(feature.properties.response.headline);
     }
   }).addTo(map);
 });
